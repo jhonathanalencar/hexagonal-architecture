@@ -30,6 +30,6 @@ test("Deve calcular a fatura", async () => {
     currencyGateway
   );
 
-  const total = await calculateInvoice.execute("1234");
-  expect(total).toBe(2300);
+  const output = await calculateInvoice.execute("1234");
+  expect(output.total).toBe(2300);
 });

@@ -24,6 +24,6 @@ export class CalculateInvoice {
     const invoice = new Invoice(transactions, currencies);
     const total = invoice.getTotal();
 
-    return total;
+    return { total };
   }
 }
