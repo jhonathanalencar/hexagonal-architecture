@@ -3,11 +3,13 @@ import { CalculateInvoice } from "./CalculateInvoice";
 import { TransactionDAODatabase } from "./TransactionDAODatabase";
 import { CurrencyGatewayHttp } from "./CurrencyGatewayHttp";
 import { AxiosAdapter } from "./AxiosAdapter";
+import { PgPromiseAdapter } from "./PgPromiseAdapter";
 
 const app = express();
 
 app.get("/cards/:cardNumber/invoices", async (req, res) => {
-  const transactionDAO = new TransactionDAODatabase();
+  const connection = new PgPromiseAdapter();
+  const transactionDAO = new TransactionDAODatabase(connection);
 
   const httpClient = new AxiosAdapter();
   const baseUrl = "http://localhost:3001";
